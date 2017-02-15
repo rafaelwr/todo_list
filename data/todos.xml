@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<todos>
+<todo><id>0</id><text>Take a look at the application</text><done>true</done><show>true</show></todo><todo><id>1</id><text>Add ability to filter todos</text><done>false</done><show>true</show></todo><todo><id>2</id><text>Filter todos by status</text><done>false</done><show>true</show></todo><todo><id>3</id><text>Filter todos by text</text><done>false</done><show>true</show></todo></todos>
