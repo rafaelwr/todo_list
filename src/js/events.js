@@ -4,17 +4,7 @@ import {addTodo, updateTodo, deleteTodo, toggleTodoState, showTodo} from './acti
 
 export function registerEventHandlers() {
     listen('click', '#addTodo', event => {
-        const todoInput = document.getElementById('todoInput');
-        
-        if(todoInput.value != ''){
-        	todos.dispatch(addTodo(todoInput.value));
-        	document.getElementById('todoInput').focus();
-    	}else{
-    		todoInput.placeholder = '* Campo Obrigatório';
-    		todoInput.className = 'error-input';
-    	}
-
-        event.stopPropagation();
+        addTodoInput();
     });
 
     listen('click', '.js_toggle_todo', event => {
@@ -48,20 +38,10 @@ export function registerEventHandlers() {
         event.stopPropagation();
     });
 
-    listen('keypress', '#todoInput', event => {
+    listen('keypress', '#todoInput', event => {  
         if (event.key == 'Enter'){
-        	const todoInput = document.getElementById('todoInput');
-
-        	if(todoInput.value != ''){
-        		todos.dispatch(addTodo(todoInput.value));
-    	    	document.getElementById('todoInput').focus();
-    		}else{
-    			todoInput.placeholder = '* Campo Obrigatório';
-    			todoInput.className = 'error-input';
-    		}
+            addTodoInput();
         }
-
-        event.stopPropagation();
     });
 
     listen('click', '#filter input', event => {
@@ -86,6 +66,7 @@ export function registerEventHandlers() {
     });
 
     listen('click', '.updateOption i', event => {
+        alert('1');
         var id = event.target.getAttribute('data-id');
         var element = $("[data-id='" + id + "']").find('.inputEditTodo');
 
@@ -112,3 +93,17 @@ export function registerEventHandlers() {
         event.stopPropagation();
     });
 }
+
+function addTodoInput(){
+    const todoInput = document.getElementById('todoInput');
+        
+    if(todoInput.value != ''){
+        todos.dispatch(addTodo(todoInput.value));
+        document.getElementById('todoInput').focus();
+    }else{
+        todoInput.placeholder = '* Campo Obrigatório';
+        todoInput.className = 'error-input';
+    }
+
+    event.stopPropagation();
+};
