@@ -2,13 +2,25 @@ html, body, .todo {
     margin: 0;
     padding: 0;
     font-size: 20px;
-    font-family: Arial;
+    font-family: Arial;        
+}
+
+body {
+    background: #d38312;
+    background: linear-gradient(to left, #D38312 , #A83279);
+    background: -webkit-linear-gradient(to left, #D38312 , #A83279);
+    padding-bottom: 10px;
 }
 
 .todo {
     list-style-type: none;
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+.todo__input {
+    background-color: #fff;
+    width: 380px !important;
 }
 
 .todo__input, .todo__item {
@@ -91,6 +103,7 @@ html, body, .todo {
 
 #addTodo {
     margin-left: 10px;
+    outline: none;
 }
 
 #app {
@@ -102,6 +115,21 @@ html, body, .todo {
 	padding-top: 30px;
 	padding-bottom: 15px;
 	text-align: center;
+    background-color: #fff;
+    /*border-top-left-radius: 15px;
+    border-top-right-radius: 15px;*/
+    margin-top: 10px;
+}
+
+.todo {
+    background-color: #fff;
+    /*border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-bottom: 10px !important;*/
+}
+
+#app #filter {
+    background-color: #fff;
 }
 
 #app #filter, #app #top, #app .todo__input, #app .todo {
@@ -180,8 +208,12 @@ html, body, .todo {
 	line-height: 20px;
 }
 
+#filter input[type=radio] + label:hover::before {
+    background-color: #ccc;
+}
+
 #filter input[type=radio]:checked + label::before {
-	background-color: #333;
+	background-color: #333 !important;
 }
 
 .todo__item input[type=checkbox] {
@@ -219,7 +251,7 @@ html, body, .todo {
     float: right;
 }
 
-.content-item {
+.content-item {    
     width: calc(100% - 62px);
     display: inline-block;
 }
@@ -235,4 +267,10 @@ html, body, .todo {
 
 .itemOption:hover {
     color: #555;
+}
+
+@-moz-document url-prefix() { 
+    .content-item {
+        width: calc(100% - 72px);
+    } 
 }
