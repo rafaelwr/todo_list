@@ -1,6 +1,6 @@
 import {todos} from './state';
 import {listen} from './lib/events';
-import {addTodo, toggleTodoState, showTodo} from './actions';
+import {addTodo, updateTodo, deleteTodo, toggleTodoState, showTodo} from './actions';
 
 export function registerEventHandlers() {
     listen('click', '#addTodo', event => {
@@ -9,11 +9,12 @@ export function registerEventHandlers() {
         if(todoInput.value != ''){
         	todos.dispatch(addTodo(todoInput.value));
         	document.getElementById('todoInput').focus();
-        	event.stopPropagation();
     	}else{
     		todoInput.placeholder = '* Campo Obrigatório';
     		todoInput.className = 'error-input';
     	}
+
+        event.stopPropagation();
     });
 
     listen('click', '.js_toggle_todo', event => {
@@ -43,6 +44,8 @@ export function registerEventHandlers() {
     			$('#radio_fechados').attr('checked', 'checked');
     			break;
     	}
+
+        event.stopPropagation();
     });
 
     listen('keypress', '#todoInput', event => {
@@ -52,12 +55,13 @@ export function registerEventHandlers() {
         	if(todoInput.value != ''){
         		todos.dispatch(addTodo(todoInput.value));
     	    	document.getElementById('todoInput').focus();
-	        	event.stopPropagation();
     		}else{
     			todoInput.placeholder = '* Campo Obrigatório';
     			todoInput.className = 'error-input';
     		}
         }
+
+        event.stopPropagation();
     });
 
     listen('click', '#filter input', event => {
@@ -76,6 +80,35 @@ export function registerEventHandlers() {
     			todos.dispatch(showTodo('fechados'));
     			$('#radio_fechados').attr('checked', 'checked');
     			break;
-    	}        
+    	}     
+
+        event.stopPropagation();   
+    });
+
+    listen('click', '.updateOption i', event => {
+        var id = event.target.getAttribute('data-id');
+        var element = $("[data-id='" + id + "']").find('.inputEditTodo');
+
+        if (element.prop('disabled')){
+            element.prop('disabled', false);
+            element.focus();
+            $("[data-id='" + id + "']").find('.updateOption').html('<i class="fa fa-check" aria-hidden="true" data-id="' + id + '"></i>');
+        }else{
+            var text = element.val();
+
+            todos.dispatch(updateTodo(id, text));
+            $("[data-id='" + id + "']").find('.inputEditTodo').val(text);
+            $("[data-id='" + id + "']").find('.updateOption').html('<i class="fa fa-pencil" aria-hidden="true" data-id="' + id + '"></i>');
+            element.prop('disabled', true);
+            event.stopPropagation();
+        }        
+    });
+
+    listen('click', '.deleteOption i', event => {
+        var id = event.target.getAttribute('data-id');
+
+        todos.dispatch(deleteTodo(id));
+        $('.todo').find("[data-id='" + id + "']").remove();
+        event.stopPropagation();
     });
 }

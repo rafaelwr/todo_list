@@ -51,7 +51,7 @@ function renderAddTodoAtBottom(top, input, todoList, filter) {
 }
 
 function renderInput() {
-    return `<div class="todo__input center"><input type="text" id="todoInput" placeholder="To Do" maxlength="70"><button id="addTodo">+</button></div>`;
+    return `<div class="todo__input center"><input type="text" id="todoInput" placeholder="To Do" maxlength="20"><button id="addTodo">+</button></div>`;
 }
 
 function renderTodos(todoItems) {
@@ -60,9 +60,15 @@ function renderTodos(todoItems) {
 
 function renderTodoItem(todo) {    
     const todoClass = `todo__item todo__item--${todo.done ? 'done' : 'open'}`;
-    return `<li class="${todoClass} ${todo.show ? 'ok' : 'hidden'}">
+    return `<li class="${todoClass} ${todo.show ? 'ok' : 'hidden'}" data-id="${todo.id}">
+        <div class="content-item">
         <input class="js_toggle_todo" type="checkbox" id="checkbox_todo_${todo.id}" data-id="${todo.id}"${todo.done ? ' checked' : ''}>
-        <label for="checkbox_todo_${todo.id}">&nbsp ${todo.text}</label>
+        <label for="checkbox_todo_${todo.id}">&nbsp <input type="text" class="inputEditTodo" value="${todo.text}" maxlength="20" disabled></label>
+        </div>
+        <div class="pull-right">
+        <button class="itemOption updateOption"><i class="fa fa-pencil" aria-hidden="true" data-id="${todo.id}"></i></button>
+        <button class="itemOption deleteOption"><i class="fa fa-trash-o" aria-hidden="true" data-id="${todo.id}"></i></button>
+        </div>
     </li>`;
 }
 

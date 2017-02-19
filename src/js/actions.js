@@ -13,6 +13,21 @@ export function addTodo(text) {
     }
 }
 
+export function updateTodo(id, text) {
+    return {
+        type: 'UPDATE_TODO',
+        id,
+        text
+    }
+}
+
+export function deleteTodo(id) {
+    return {
+        type: 'DELETE_TODO',
+        id
+    }
+}
+
 export function showTodo(status) {
     switch (status){
     	case 'todos':

@@ -74,7 +74,6 @@ function todoChangeHandler(state, change) {
             editXml('insert', state.todos.length, change.text, false, true);
 
             if (filter_val == 'fechados'){
-
                 state.todos.push({
                     id: state.todos.length,
                     text: change.text,
@@ -93,10 +92,16 @@ function todoChangeHandler(state, change) {
             $('#' + filter_id).attr('checked', 'checked');
 
             break;
+        case 'UPDATE_TODO':
+            editXml('update', change.id, change.text, null, null);
+            break;
+        case 'DELETE_TODO':
+            editXml('delete', change.id, null, null, null);
+            break;
         case 'TODO_TOGGLE_DONE':
             for(let todo of state.todos) {
                 if(todo.id == change.id) {
-                    editXml('update', todo.id, null, !todo.done, null);
+                    editXml('update', todo.id, todo.text, !todo.done, null);
                     todo.done = !todo.done;
                     break;
                 }
