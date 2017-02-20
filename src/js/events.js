@@ -84,7 +84,7 @@ export function registerEventHandlers() {
         }
     });
 
-    listen('click', '.deleteOption i', event => {
+    listen('click', '.deleteOption, .deleteOption i', event => {
         var id = event.target.getAttribute('data-id');
 
         todos.dispatch(deleteTodo(id));
