@@ -16,11 +16,13 @@ body {
     list-style-type: none;
     padding-top: 15px;
     padding-bottom: 15px;
+    background-color: #fff;
 }
 
 .todo__input {
     background-color: #fff;
     width: 380px !important;
+    padding-top: 15px;
 }
 
 .todo__input, .todo__item {
@@ -36,11 +38,7 @@ body {
     visibility: visible;
 }
 
-.todo__input {
-    padding-top: 15px;
-}
-
-.error-input{
+.error-input {
 	border: 1px solid red !important;
 }
 
@@ -116,16 +114,7 @@ body {
 	padding-bottom: 15px;
 	text-align: center;
     background-color: #fff;
-    /*border-top-left-radius: 15px;
-    border-top-right-radius: 15px;*/
     margin-top: 10px;
-}
-
-.todo {
-    background-color: #fff;
-    /*border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    margin-bottom: 10px !important;*/
 }
 
 #app #filter {

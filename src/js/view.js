@@ -69,7 +69,7 @@ function renderTodoItem(todo) {
         <button class="itemOption updateOption" data-id="${todo.id}"><i class="fa fa-pencil" aria-hidden="true" data-id="${todo.id}"></i></button>
         <button class="itemOption deleteOption" data-id="${todo.id}"><i class="fa fa-trash-o" aria-hidden="true" data-id="${todo.id}"></i></button>
         </div>
-    </li>`;
+        </li>`;
 }
 
 function renderFilter(){
