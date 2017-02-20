@@ -65,8 +65,7 @@ export function registerEventHandlers() {
         event.stopPropagation();   
     });
 
-    listen('click', '.updateOption i', event => {
-        alert('1');
+    listen('click', '.updateOption, .updateOption i', event => {
         var id = event.target.getAttribute('data-id');
         var element = $("[data-id='" + id + "']").find('.inputEditTodo');
 
@@ -82,7 +81,7 @@ export function registerEventHandlers() {
             $("[data-id='" + id + "']").find('.updateOption').html('<i class="fa fa-pencil" aria-hidden="true" data-id="' + id + '"></i>');
             element.prop('disabled', true);
             event.stopPropagation();
-        }        
+        }
     });
 
     listen('click', '.deleteOption i', event => {

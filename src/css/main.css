@@ -263,6 +263,7 @@ body {
     cursor: pointer;
     font-size: 18px;
     visibility: hidden;
+    max-width: 34px;
 }
 
 .itemOption:hover {

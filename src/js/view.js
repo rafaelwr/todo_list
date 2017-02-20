@@ -66,8 +66,8 @@ function renderTodoItem(todo) {
         <label for="checkbox_todo_${todo.id}">&nbsp <input type="text" class="inputEditTodo" value="${todo.text}" maxlength="20" disabled></label>
         </div>
         <div class="pull-right">
-        <button class="itemOption updateOption"><i class="fa fa-pencil" aria-hidden="true" data-id="${todo.id}"></i></button>
-        <button class="itemOption deleteOption"><i class="fa fa-trash-o" aria-hidden="true" data-id="${todo.id}"></i></button>
+        <button class="itemOption updateOption" data-id="${todo.id}"><i class="fa fa-pencil" aria-hidden="true" data-id="${todo.id}"></i></button>
+        <button class="itemOption deleteOption" data-id="${todo.id}"><i class="fa fa-trash-o" aria-hidden="true" data-id="${todo.id}"></i></button>
         </div>
     </li>`;
 }
